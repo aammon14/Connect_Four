@@ -1,0 +1,45 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  background: lightblue;
+}
+
+.cell {
+  background: lightgray;
+  padding: 20px;
+  width: 8%;
+  height: 65px;
+  border: solid 2px darkblue;
+  border-radius: 50%;
+  flex-basis: 14%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  width: 51%;
+  justify-content: space-between;
+}
+
+.yellow {
+  background: yellow;
+}
+
+.red {
+  background: red;
+}
+
+
+h1 {
+  text-align: center;
+}
