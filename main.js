@@ -51,17 +51,20 @@ var fourthColumn = document.querySelectorAll('[data-column="3"]');
 var fifthColumn = document.querySelectorAll('[data-column="4"]');
 var sixthColumn = document.querySelectorAll('[data-column="5"]');
 var seventhColumn = document.querySelectorAll('[data-column="6"]');
-grid[0].push(firstColumn);
-grid[1].push(secondColumn);
-grid[2].push(thirdColumn);
-grid[3].push(fourthColumn);
-grid[4].push(fifthColumn);
-grid[5].push(sixthColumn);
-grid[6].push(seventhColumn);
+var allColumns = {firstColumn, secondColumn, thirdColumn, fourthColumn, fifthColumn, sixthColumn, seventhColumn}
+// grid[0].push(firstColumn);
+// grid[1].push(secondColumn);
+// grid[2].push(thirdColumn);
+// grid[3].push(fourthColumn);
+// grid[4].push(fifthColumn);
+// grid[5].push(sixthColumn);
+// grid[6].push(seventhColumn);
+
 
 
 
 //The following contains all the code for dropping a disc for each seperate column
+
 for (var i = 0; i < 6; i++) {
   firstColumn[i].addEventListener('click', dropDisc)
 }
@@ -374,12 +377,12 @@ function checkForWin () {
           && row[j].childNodes[i+1].classList.contains('red')
           && row[j].childNodes[i+2].classList.contains('red')
           && row[j].childNodes[i+3].classList.contains('red')) {
-          alert('red wins')
+          redWins()
         } else if (row[j].childNodes[i].classList.contains('yellow')
           && row[j].childNodes[i+1].classList.contains('yellow')
           && row[j].childNodes[i+2].classList.contains('yellow')
           && row[j].childNodes[i+3].classList.contains('yellow')) {
-          alert('yellow wins')
+          yellowWins()
         }
       }
     }
@@ -394,12 +397,12 @@ function checkForWin () {
           && row[i+1].childNodes[j].classList.contains('red')
           && row[i+2].childNodes[j].classList.contains('red')
           && row[i+3].childNodes[j].classList.contains('red')) {
-          alert('red wins')
+          redWins()
         } else if (row[i].childNodes[j].classList.contains('yellow')
           && row[i+1].childNodes[j].classList.contains('yellow')
           && row[i+2].childNodes[j].classList.contains('yellow')
           && row[i+3].childNodes[j].classList.contains('yellow')) {
-          alert('yellow wins')
+          yellowWins()
         }
       }
     }
@@ -414,12 +417,12 @@ function checkForWin () {
           && row[j+1].childNodes[i+1].classList.contains('red')
           && row[j+2].childNodes[i+2].classList.contains('red')
           && row[j+3].childNodes[i+3].classList.contains('red')) {
-          alert('red wins')
+          redWins()
         } else if (row[j].childNodes[i].classList.contains('yellow')
           && row[j+1].childNodes[i+1].classList.contains('yellow')
           && row[j+2].childNodes[i+2].classList.contains('yellow')
           && row[j+3].childNodes[i+3].classList.contains('yellow')) {
-          alert('yellow wins')
+          yellowWins()
         }
       }
     } 
@@ -434,12 +437,12 @@ function checkForWin () {
           && row[j-1].childNodes[i+1].classList.contains('red')
           && row[j-2].childNodes[i+2].classList.contains('red')
           && row[j-3].childNodes[i+3].classList.contains('red')) {
-          alert('red wins')
+          redWins()
         } else if (row[j].childNodes[i].classList.contains('yellow')
           && row[j-1].childNodes[i+1].classList.contains('yellow')
           && row[j-2].childNodes[i+2].classList.contains('yellow')
           && row[j-3].childNodes[i+3].classList.contains('yellow')) {
-          alert('yellow wins')
+          yellowWins()
         }
       }
     } 
@@ -449,8 +452,31 @@ function checkForWin () {
   //If the board is full alert it's a draw
   function checkForDraw() {
     if (playerMoves === 42) {
-      alert("It's a draw!")
+      tieGame()
     }
   }
   checkForDraw();
+}
+
+var footer = document.getElementsByTagName('footer');
+
+function redWins() {
+  var banner = document.createElement('div');
+  banner.innerText = "Red Wins!!!";
+  banner.classList.add('banner', 'redBanner');
+  footer[0].appendChild(banner);
+}
+
+function yellowWins() {
+  var banner = document.createElement('div');
+  banner.innerText = "Yellow Wins!!!";
+  banner.classList.add('banner', 'yellowBanner');
+  footer[0].appendChild(banner);
+}
+
+function tieGame() {
+  var banner = document.createElement('div');
+  banner.innerText = "Tie Game";
+  banner.classList.add('banner', 'drawBanner');
+  footer[0].appendChild(banner);
 }
