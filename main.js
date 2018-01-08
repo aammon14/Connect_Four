@@ -1,23 +1,20 @@
 console.log('js connected');
 //Grab main tag from html
 var main = document.getElementsByTagName('main')[0];
-
 //create game board variable and append to main
 var gameBoard = document.createElement('div');
 gameBoard.classList.add('grid');
 main.appendChild(gameBoard);
 
+
 //Create vaiables board and two players as well as player classes
-var grid = {
-  row: [],
-  cols: [],
-  //getRows: getRows,
-  //getCols: getCols
-};
+var grid = [[],[],[],[],[],[],[]];
+
 var playerRed = 'redPlayer';
 var playerYellow = 'yellowPlayer';
 var playerRedClass = 'red';
 var playerYellowClass = 'yellow';
+
 
 //create out game board
 function makeBoard() {
@@ -28,7 +25,7 @@ function makeBoard() {
     //put 7 cell divs in each row div and assign cell class
     for (k = 0; k < 7; k++) {
       var cell = document.createElement('div');
-      cell.classList.add('cell');
+      cell.classList.add('cell', 'empty');
       row.appendChild(cell);
     }
     //attach our rows to the game board
@@ -40,57 +37,351 @@ makeBoard();
 
 var cell = document.getElementsByClassName('cell');
 var row = document.getElementsByClassName('row');
-//this will assign each column a column class and column number
-function assignColumnNumber() { 
-  for (var i = 0; i < 42; i++) {
-    if (i % 7 === 0) {
-      cell[i].classList.add('column', 'one');
-    } else if (i % 7 === 1) {
-      cell[i].classList.add('column', 'two');
-    } else if (i % 7 === 2) {
-      cell[i].classList.add('column', 'three');
-    } else if (i % 7 === 3) {
-      cell[i].classList.add('column', 'four');
-    } else if (i % 7 === 4) {
-      cell[i].classList.add('column', 'five');
-    } else if (i % 7 === 5) {
-      cell[i].classList.add('column', 'six');
-    } else if (i % 7 === 6) {
-      cell[i].classList.add('column', 'seven');
-    }
-  }
+
+//this will assign each cell a data-set 'column'
+function assignColumnNumber(e) { 
+  //add data params
+  for (var i = 0; i < cell.length; i++) {
+    (cell[i].dataset.column = i % 7);
+  }  
 }
 assignColumnNumber();
 
-//We need to add event listeners so that when a column is clicked
-//a cell will drop to the bottom row
 
-  //I need to first figure out how to grab a column in order to
-  //add a listener to each column
-var colOne = document.getElementsByClassName('one');
-  for (var i = 0; i < 6; i++) {
-    colOne[i].addEventListener('click', dropDisc)
-  }
+var playerMoves = 0;
 
+var firstColumn = document.querySelectorAll('[data-column="0"]');
+var secondColumn = document.querySelectorAll('[data-column="1"]');
+var thirdColumn = document.querySelectorAll('[data-column="2"]');
+var fourthColumn = document.querySelectorAll('[data-column="3"]');
+var fifthColumn = document.querySelectorAll('[data-column="4"]');
+var sixthColumn = document.querySelectorAll('[data-column="5"]');
+var seventhColumn = document.querySelectorAll('[data-column="6"]');
+grid[0].push(firstColumn);
+grid[1].push(secondColumn);
+grid[2].push(thirdColumn);
+grid[3].push(fourthColumn);
+grid[4].push(fifthColumn);
+grid[5].push(sixthColumn);
+grid[6].push(seventhColumn);
+
+// for (var i = 0; i < grid.length; i++) {
+//   grid.foreach(function () {
+//     grid.addEventListener('click', function() {
+//     console.log('hey')
+//   })
+// }
+
+
+for (var i = 0; i < 6; i++) {
+  firstColumn[i].addEventListener('click', dropDisc)
+}
 
 function dropDisc() {
-    for (var i = 5; i >= 0; i--) {
-      if (colOne[i].classList.contains('yellow') !== true) {
-        colOne[i].classList.add('yellow');
-      } else if (colOne[i].classList.contains('yellow') === true && colOne[i-1].classList.contains('yellow') !== true) {
-        colOne[i-1].classList.add('yellow');
-      } else if (colOne[i].classList.contains('yellow') === true && colOne[i-2].classList.contains('yellow') !== true) {
-        colOne[i-2].classList.add('yellow');
-      } else if (colOne[i].classList.contains('yellow') === true && colOne[i-3].classList.contains('yellow') !== true) {
-        colOne[i-3].classList.add('yellow');
-      } else if (colOne[i].classList.contains('yellow') === true && colOne[i-4].classList.contains('yellow') !== true) {
-        colOne[i-4].classList.add('yellow');
-      } else if (colOne[i].classList.contains('yellow') === true && colOne[i-5].classList.contains('yellow') !== true) {
-        colOne[i-5].classList.add('yellow');
-      } return dropDisc
-    }   
+  playerMoves += 1;
+  //console.log(playerMoves);
+  for (var i = 5; i >= 0; i--) {
+    if (playerMoves % 2 === 1) {
+      if (firstColumn[i].classList.contains('empty') === true) {
+        firstColumn[i].classList.replace('empty', 'yellow')
+      }  else if (firstColumn[i-1].classList.contains('empty') === true) {
+        firstColumn[i-1].classList.replace('empty', 'yellow')
+      } else if (firstColumn[i-2].classList.contains('empty') === true) {
+        firstColumn[i-2].classList.replace('empty', 'yellow')
+      } else if (firstColumn[i-3].classList.contains('empty') === true) {
+        firstColumn[i-3].classList.replace('empty', 'yellow')
+      } else if (firstColumn[i-4].classList.contains('empty') === true) {
+        firstColumn[i-4].classList.replace('empty', 'yellow')
+      } else if (firstColumn[i-5].classList.contains('empty') === true) {
+        firstColumn[i-5].classList.replace('empty', 'yellow')
+      } else {
+        alert('Column full, try a different one!')
+      }
+    } else if (playerMoves % 2 === 0) {
+      if (firstColumn[i].classList.contains('empty') === true) {
+        firstColumn[i].classList.replace('empty', 'red')
+      }  else if (firstColumn[i-1].classList.contains('empty') === true) {
+        firstColumn[i-1].classList.replace('empty', 'red')
+      } else if (firstColumn[i-2].classList.contains('empty') === true) {
+        firstColumn[i-2].classList.replace('empty', 'red')
+      } else if (firstColumn[i-3].classList.contains('empty') === true) {
+        firstColumn[i-3].classList.replace('empty', 'red')
+      } else if (firstColumn[i-4].classList.contains('empty') === true) {
+        firstColumn[i-4].classList.replace('empty', 'red')
+      } else if (firstColumn[i-5].classList.contains('empty') === true) {
+        firstColumn[i-5].classList.replace('empty', 'red')
+      } else {
+        alert('Column full, try a different one!')
+      } 
+    } return dropDisc
+  }
 }
 
 
+// var $aColumn = $('div[data-column]');
 
 
+// for (var i =0; i < grid.length; i++) {
+//   grid[i].classList.add('column', i)
+// }
+// grid.forEach(addEventListener('click', function() {
+//   console.log('hey')
+// }))
+
+for (var i = 0; i < 6; i++) {
+  secondColumn[i].addEventListener('click', dropDiscTwo)
+}
+function dropDiscTwo() {
+  playerMoves += 1;
+  //console.log(playerMoves);
+  for (var i = 5; i >= 0; i--) {
+    if (playerMoves % 2 === 1) {
+      if (secondColumn[i].classList.contains('empty') === true) {
+        secondColumn[i].classList.replace('empty', 'yellow')
+      }  else if (secondColumn[i-1].classList.contains('empty') === true) {
+        secondColumn[i-1].classList.replace('empty', 'yellow')
+      } else if (secondColumn[i-2].classList.contains('empty') === true) {
+        secondColumn[i-2].classList.replace('empty', 'yellow')
+      } else if (secondColumn[i-3].classList.contains('empty') === true) {
+        secondColumn[i-3].classList.replace('empty', 'yellow')
+      } else if (secondColumn[i-4].classList.contains('empty') === true) {
+        secondColumn[i-4].classList.replace('empty', 'yellow')
+      } else if (secondColumn[i-5].classList.contains('empty') === true) {
+        secondColumn[i-5].classList.replace('empty', 'yellow')
+      } else {
+        alert('Column full, try a different one!')
+      }
+    } else if (playerMoves % 2 === 0) {
+      if (secondColumn[i].classList.contains('empty') === true) {
+        secondColumn[i].classList.replace('empty', 'red')
+      }  else if (secondColumn[i-1].classList.contains('empty') === true) {
+        secondColumn[i-1].classList.replace('empty', 'red')
+      } else if (secondColumn[i-2].classList.contains('empty') === true) {
+        secondColumn[i-2].classList.replace('empty', 'red')
+      } else if (secondColumn[i-3].classList.contains('empty') === true) {
+        secondColumn[i-3].classList.replace('empty', 'red')
+      } else if (secondColumn[i-4].classList.contains('empty') === true) {
+        secondColumn[i-4].classList.replace('empty', 'red')
+      } else if (secondColumn[i-5].classList.contains('empty') === true) {
+        secondColumn[i-5].classList.replace('empty', 'red')
+      } else {
+        alert('Column full, try a different one!')
+      } 
+    } return dropDiscTwo
+  }
+}
+
+for (var i = 0; i < 6; i++) {
+  thirdColumn[i].addEventListener('click', dropDiscThree)
+}
+function dropDiscThree() {
+  playerMoves += 1;
+  //console.log(playerMoves);
+  for (var i = 5; i >= 0; i--) {
+    if (playerMoves % 2 === 1) {
+      if (thirdColumn[i].classList.contains('empty') === true) {
+        thirdColumn[i].classList.replace('empty', 'yellow')
+      }  else if (thirdColumn[i-1].classList.contains('empty') === true) {
+        thirdColumn[i-1].classList.replace('empty', 'yellow')
+      } else if (thirdColumn[i-2].classList.contains('empty') === true) {
+        thirdColumn[i-2].classList.replace('empty', 'yellow')
+      } else if (thirdColumn[i-3].classList.contains('empty') === true) {
+        thirdColumn[i-3].classList.replace('empty', 'yellow')
+      } else if (thirdColumn[i-4].classList.contains('empty') === true) {
+        thirdColumn[i-4].classList.replace('empty', 'yellow')
+      } else if (thirdColumn[i-5].classList.contains('empty') === true) {
+        thirdColumn[i-5].classList.replace('empty', 'yellow')
+      } else {
+        alert('Column full, try a different one!')
+      }
+    } else if (playerMoves % 2 === 0) {
+      if (thirdColumn[i].classList.contains('empty') === true) {
+        thirdColumn[i].classList.replace('empty', 'red')
+      }  else if (thirdColumn[i-1].classList.contains('empty') === true) {
+        thirdColumn[i-1].classList.replace('empty', 'red')
+      } else if (thirdColumn[i-2].classList.contains('empty') === true) {
+        thirdColumn[i-2].classList.replace('empty', 'red')
+      } else if (thirdColumn[i-3].classList.contains('empty') === true) {
+        thirdColumn[i-3].classList.replace('empty', 'red')
+      } else if (thirdColumn[i-4].classList.contains('empty') === true) {
+        thirdColumn[i-4].classList.replace('empty', 'red')
+      } else if (thirdColumn[i-5].classList.contains('empty') === true) {
+        thirdColumn[i-5].classList.replace('empty', 'red')
+      } else {
+        alert('Column full, try a different one!')
+      } 
+    } return dropDiscThree
+  }
+}
+
+for (var i = 0; i < 6; i++) {
+  fourthColumn[i].addEventListener('click', dropDiscFour)
+}
+function dropDiscFour() {
+  playerMoves += 1;
+  //console.log(playerMoves);
+  for (var i = 5; i >= 0; i--) {
+    if (playerMoves % 2 === 1) {
+      if (fourthColumn[i].classList.contains('empty') === true) {
+        fourthColumn[i].classList.replace('empty', 'yellow')
+      }  else if (fourthColumn[i-1].classList.contains('empty') === true) {
+        fourthColumn[i-1].classList.replace('empty', 'yellow')
+      } else if (fourthColumn[i-2].classList.contains('empty') === true) {
+        fourthColumn[i-2].classList.replace('empty', 'yellow')
+      } else if (fourthColumn[i-3].classList.contains('empty') === true) {
+        fourthColumn[i-3].classList.replace('empty', 'yellow')
+      } else if (fourthColumn[i-4].classList.contains('empty') === true) {
+        fourthColumn[i-4].classList.replace('empty', 'yellow')
+      } else if (fourthColumn[i-5].classList.contains('empty') === true) {
+        fourthColumn[i-5].classList.replace('empty', 'yellow')
+      } else {
+        alert('Column full, try a different one!')
+      }
+    } else if (playerMoves % 2 === 0) {
+      if (fourthColumn[i].classList.contains('empty') === true) {
+        fourthColumn[i].classList.replace('empty', 'red')
+      }  else if (fourthColumn[i-1].classList.contains('empty') === true) {
+        fourthColumn[i-1].classList.replace('empty', 'red')
+      } else if (fourthColumn[i-2].classList.contains('empty') === true) {
+        fourthColumn[i-2].classList.replace('empty', 'red')
+      } else if (fourthColumn[i-3].classList.contains('empty') === true) {
+        fourthColumn[i-3].classList.replace('empty', 'red')
+      } else if (fourthColumn[i-4].classList.contains('empty') === true) {
+        fourthColumn[i-4].classList.replace('empty', 'red')
+      } else if (fourthColumn[i-5].classList.contains('empty') === true) {
+        fourthColumn[i-5].classList.replace('empty', 'red')
+      } else {
+        alert('Column full, try a different one!')
+      } 
+    } return dropDiscFour
+  }
+}
+
+for (var i = 0; i < 6; i++) {
+  fifthColumn[i].addEventListener('click', dropDiscFive)
+}
+function dropDiscFive() {
+  playerMoves += 1;
+  //console.log(playerMoves);
+  for (var i = 5; i >= 0; i--) {
+    if (playerMoves % 2 === 1) {
+      if (fifthColumn[i].classList.contains('empty') === true) {
+        fifthColumn[i].classList.replace('empty', 'yellow')
+      }  else if (fifthColumn[i-1].classList.contains('empty') === true) {
+        fifthColumn[i-1].classList.replace('empty', 'yellow')
+      } else if (fifthColumn[i-2].classList.contains('empty') === true) {
+        fifthColumn[i-2].classList.replace('empty', 'yellow')
+      } else if (fifthColumn[i-3].classList.contains('empty') === true) {
+        fifthColumn[i-3].classList.replace('empty', 'yellow')
+      } else if (fifthColumn[i-4].classList.contains('empty') === true) {
+        fifthColumn[i-4].classList.replace('empty', 'yellow')
+      } else if (fifthColumn[i-5].classList.contains('empty') === true) {
+        fifthColumn[i-5].classList.replace('empty', 'yellow')
+      } else {
+        alert('Column full, try a different one!')
+      }
+    } else if (playerMoves % 2 === 0) {
+      if (fifthColumn[i].classList.contains('empty') === true) {
+        fifthColumn[i].classList.replace('empty', 'red')
+      }  else if (fifthColumn[i-1].classList.contains('empty') === true) {
+        fifthColumn[i-1].classList.replace('empty', 'red')
+      } else if (fifthColumn[i-2].classList.contains('empty') === true) {
+        fifthColumn[i-2].classList.replace('empty', 'red')
+      } else if (fifthColumn[i-3].classList.contains('empty') === true) {
+        fifthColumn[i-3].classList.replace('empty', 'red')
+      } else if (fifthColumn[i-4].classList.contains('empty') === true) {
+        fifthColumn[i-4].classList.replace('empty', 'red')
+      } else if (fifthColumn[i-5].classList.contains('empty') === true) {
+        fifthColumn[i-5].classList.replace('empty', 'red')
+      } else {
+        alert('Column full, try a different one!')
+      } 
+    } return dropDiscFive
+  }
+}
+
+for (var i = 0; i < 6; i++) {
+  sixthColumn[i].addEventListener('click', dropDiscSix)
+}
+function dropDiscSix() {
+  playerMoves += 1;
+  //console.log(playerMoves);
+  for (var i = 5; i >= 0; i--) {
+    if (playerMoves % 2 === 1) {
+      if (sixthColumn[i].classList.contains('empty') === true) {
+        sixthColumn[i].classList.replace('empty', 'yellow')
+      }  else if (sixthColumn[i-1].classList.contains('empty') === true) {
+        sixthColumn[i-1].classList.replace('empty', 'yellow')
+      } else if (sixthColumn[i-2].classList.contains('empty') === true) {
+        sixthColumn[i-2].classList.replace('empty', 'yellow')
+      } else if (sixthColumn[i-3].classList.contains('empty') === true) {
+        sixthColumn[i-3].classList.replace('empty', 'yellow')
+      } else if (sixthColumn[i-4].classList.contains('empty') === true) {
+        sixthColumn[i-4].classList.replace('empty', 'yellow')
+      } else if (sixthColumn[i-5].classList.contains('empty') === true) {
+        sixthColumn[i-5].classList.replace('empty', 'yellow')
+      } else {
+        alert('Column full, try a different one!')
+      }
+    } else if (playerMoves % 2 === 0) {
+      if (sixthColumn[i].classList.contains('empty') === true) {
+        sixthColumn[i].classList.replace('empty', 'red')
+      }  else if (sixthColumn[i-1].classList.contains('empty') === true) {
+        sixthColumn[i-1].classList.replace('empty', 'red')
+      } else if (sixthColumn[i-2].classList.contains('empty') === true) {
+        sixthColumn[i-2].classList.replace('empty', 'red')
+      } else if (sixthColumn[i-3].classList.contains('empty') === true) {
+        sixthColumn[i-3].classList.replace('empty', 'red')
+      } else if (sixthColumn[i-4].classList.contains('empty') === true) {
+        sixthColumn[i-4].classList.replace('empty', 'red')
+      } else if (sixthColumn[i-5].classList.contains('empty') === true) {
+        sixthColumn[i-5].classList.replace('empty', 'red')
+      } else {
+        alert('Column full, try a different one!')
+      } 
+    } return dropDiscSix
+  }
+}
+
+for (var i = 0; i < 6; i++) {
+  seventhColumn[i].addEventListener('click', dropDiscSeven)
+}
+function dropDiscSeven() {
+  playerMoves += 1;
+  //console.log(playerMoves);
+  for (var i = 5; i >= 0; i--) {
+    if (playerMoves % 2 === 1) {
+      if (seventhColumn[i].classList.contains('empty') === true) {
+        seventhColumn[i].classList.replace('empty', 'yellow')
+      }  else if (seventhColumn[i-1].classList.contains('empty') === true) {
+        seventhColumn[i-1].classList.replace('empty', 'yellow')
+      } else if (seventhColumn[i-2].classList.contains('empty') === true) {
+        seventhColumn[i-2].classList.replace('empty', 'yellow')
+      } else if (seventhColumn[i-3].classList.contains('empty') === true) {
+        seventhColumn[i-3].classList.replace('empty', 'yellow')
+      } else if (seventhColumn[i-4].classList.contains('empty') === true) {
+        seventhColumn[i-4].classList.replace('empty', 'yellow')
+      } else if (seventhColumn[i-5].classList.contains('empty') === true) {
+        seventhColumn[i-5].classList.replace('empty', 'yellow')
+      } else {
+        alert('Column full, try a different one!')
+      }
+    } else if (playerMoves % 2 === 0) {
+      if (seventhColumn[i].classList.contains('empty') === true) {
+        seventhColumn[i].classList.replace('empty', 'red')
+      }  else if (seventhColumn[i-1].classList.contains('empty') === true) {
+        seventhColumn[i-1].classList.replace('empty', 'red')
+      } else if (seventhColumn[i-2].classList.contains('empty') === true) {
+        seventhColumn[i-2].classList.replace('empty', 'red')
+      } else if (seventhColumn[i-3].classList.contains('empty') === true) {
+        seventhColumn[i-3].classList.replace('empty', 'red')
+      } else if (seventhColumn[i-4].classList.contains('empty') === true) {
+        seventhColumn[i-4].classList.replace('empty', 'red')
+      } else if (seventhColumn[i-5].classList.contains('empty') === true) {
+        seventhColumn[i-5].classList.replace('empty', 'red')
+      } else {
+        alert('Column full, try a different one!')
+      } 
+    } return dropDiscSeven
+  }
+}
