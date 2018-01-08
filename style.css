@@ -1,3 +1,6 @@
+
+
+
 main {
   display: flex;
   justify-content: center;
@@ -26,6 +29,7 @@ main {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  padding: 10px;
 }
 
 .row {
@@ -41,7 +45,6 @@ main {
 .red {
   background: red;
 }
-
 
 h1 {
   text-align: center;
