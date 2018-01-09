@@ -222,28 +222,51 @@ function checkForWin() {
 
 var footer = document.getElementsByTagName("footer");
 var heading = document.getElementsByTagName("h1");
+var banner = document.createElement("div");
 
 function redWins() {
-  var banner = document.createElement("div");
   banner.innerText = "Red Wins!!!";
   banner.classList.add("banner", "redBanner");
-  footer[0].appendChild(banner);
+  heading[0].appendChild(banner);
+  addResetButton();
 }
 
 function yellowWins() {
-  var banner = document.createElement("div");
   banner.innerText = "Yellow Wins!!!";
   banner.classList.add("banner", "yellowBanner");
-  footer[0].appendChild(banner);
+  heading[0].appendChild(banner);
+  addResetButton();
 }
 
 function tieGame() {
-  var banner = document.createElement("div");
   banner.innerText = "Tie Game";
   banner.classList.add("banner", "drawBanner");
-  footer[0].appendChild(banner);
+  heading[0].appendChild(banner);
+  addResetButton();
 }
 
-var resetButton = document.createElement('div');
-resetButton.classList.add('reset');
-heading[0].appendChild(resetButton);
+var resetButton = document.createElement("div");
+resetButton.classList.add("reset");
+footer[0].appendChild(resetButton);
+resetButton.addEventListener("click", resetGame);
+
+function resetGame() {
+  for (var i = 0; i < 42; i++) {
+    cell[i].classList.remove("red", "yellow");
+    cell[i].classList.add("empty");
+    resetButton.classList.replace("resetOn", "reset");
+    banner.classList.remove(
+      "banner",
+      "redBanner",
+      "yellowBanner",
+      "drawBanner"
+    );
+    banner.innerText = "";
+    resetButton.innerText = "";
+  }
+}
+
+function addResetButton() {
+  resetButton.classList.replace("reset", "resetOn");
+  resetButton.innerText = "Click to Reset";
+}

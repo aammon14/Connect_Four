@@ -59,9 +59,10 @@ main {
   background: blue;
   border-radius: 10px;
   border: solid 5px darkblue;
-  padding: 5px 18px;
+  padding: 0 5px;
   text-align: center;
   color: red;
+  width: 500px;
 }
 
 h3 {
@@ -96,31 +97,36 @@ footer {
 .banner {
   text-transform: uppercase;
   text-align: center;
-  font-size: 60px;
-  background: blue;
+  font-size: 50px;
   border-radius: 10px;
   border: solid 5px darkblue;
-  width: 500px;
+  width: 400px;
   margin: 10px auto;
+  color: blue;
 }
 
 .redBanner {
-  color: red;
+  background: red;
+
 }
 
 .yellowBanner {
-  color: yellow;
+  background: yellow;
 }
 
 .drawBanner {
-  color: lightblue;
-}
-
-.reset {
-
+  background: lightblue;
 }
 
 .resetOn {
-  background: green;
-  height: 10px;
+  background: blue;
+  color: red;
+  border: solid 5px darkblue;
+  font-size: 50px;
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px auto;
+  text-align: center;
+  width: 500px;
 }
