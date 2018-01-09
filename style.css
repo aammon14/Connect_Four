@@ -1,6 +1,6 @@
 
 body {
-  background: lightblue;
+  background: ;
   font-family: 'Dosis', sans-serif;
 }
 
@@ -31,7 +31,7 @@ main {
   flex-flow: row wrap;
   justify-content: center;
   padding: 10px;
-  background: blue;
+  background: #003fff;
   border: solid 5px darkblue;
   max-width: 500px;
   margin-bottom: 5px;
@@ -45,52 +45,52 @@ main {
 }
 
 .yellow {
-  background: yellow;
+  background: #eef224;
 }
 
 .red {
-  background: red;
+  background: #ce1a1a;
 }
 
 
 .title {
   font-size: 60px;
   margin: 10px auto;
-  background: blue;
+  background: #003fff;
   border-radius: 10px;
   border: solid 5px darkblue;
   padding: 0 5px;
   text-align: center;
-  color: red;
+  color: #ce1a1a;
   width: 500px;
 }
 
 h3 {
   margin-bottom: 5px;
   text-align: center;
-  color: red;
+  color: #ce1a1a;
 }
 p {
   width: 400px;
   text-align: justify;
-  color: red;
+  color: #ce1a1a;
 }
 
 .button {
-  background-color: red;
-  font-size: 20px;
-  padding: 20px;
+  background-color: #ce1a1a;
+  font-size: 40px;
+  padding: 10px;
   width: 200px;
   text-align: center;
-  border: 8px solid blue;
+  border: 8px solid darkblue;
   text-decoration: none;
-  color: blue;
+  color: #003fff;
   border-radius: 10px;
   margin: 20px;
 }
 
 footer {
-  background: lightblue;
+  background: ;
   height: 100px;
 }
 
@@ -100,18 +100,18 @@ footer {
   font-size: 50px;
   border-radius: 10px;
   border: solid 5px darkblue;
-  width: 400px;
-  margin: 10px auto;
-  color: blue;
+  width: 500px;
+  margin: 5px auto 0px;
+  color: #003fff;
+  padding: 10px;
 }
 
 .redBanner {
-  background: red;
-
+  background: #ce1a1a;
 }
 
 .yellowBanner {
-  background: yellow;
+  background: #eef224;
 }
 
 .drawBanner {
@@ -119,14 +119,14 @@ footer {
 }
 
 .resetOn {
-  background: blue;
-  color: red;
+  background: #003fff;
+  color: #ce1a1a;
   border: solid 5px darkblue;
   font-size: 50px;
   text-transform: uppercase;
   border-radius: 10px;
   padding: 10px;
-  margin: 10px auto;
+  margin: 5px auto;
   text-align: center;
   width: 500px;
 }

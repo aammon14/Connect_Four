@@ -227,21 +227,21 @@ var banner = document.createElement("div");
 function redWins() {
   banner.innerText = "Red Wins!!!";
   banner.classList.add("banner", "redBanner");
-  heading[0].appendChild(banner);
+  main.appendChild(banner);
   addResetButton();
 }
 
 function yellowWins() {
   banner.innerText = "Yellow Wins!!!";
   banner.classList.add("banner", "yellowBanner");
-  heading[0].appendChild(banner);
+  main.appendChild(banner);
   addResetButton();
 }
 
 function tieGame() {
   banner.innerText = "Tie Game";
   banner.classList.add("banner", "drawBanner");
-  heading[0].appendChild(banner);
+  main.appendChild(banner);
   addResetButton();
 }
 
