@@ -1,6 +1,4 @@
 # Project1
-Answer the following questions:
-
 What is the game about?
 
 The game I chose was connect 4.  Connect 4 is a classic game in which players alternate turns dopping a dics into a vertical grid, attempting to create a line of 4 discs in a row.  You can get four in a row horizontally vertically or diagonally.
@@ -20,11 +18,10 @@ The next major pain point was figuring out the win logic.  There are 69 differen
 
 Is there any other information you think might help us understand what you've built?
 
-Basically all there is to this game is 1) build a grid 2) add click listeners to the grid 3) have discs drop into the grid and 4) check for win logic
+Basically all there is to this game is 1) build a grid 2) add click listeners to the grid 3) On click have discs drop into the grid and 4) check for win logic
 
 
 List the technologies used
-
   HTML
   CSS
   Javascript (plain vanilla)
