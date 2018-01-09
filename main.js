@@ -70,12 +70,6 @@ function addColumnListeners(column) {
   }
 }
 
-function removeColumnListeners(column) {
- for (var i = 0; i < 6; i++) {
-    column[i].removeEventListener("click", dropDisc.bind(null, column));
- }
-}
-
 function addAllColumnListeners() {
   for (var i = 0; i < allColumns.length; i++) {
     addColumnListeners(allColumns[i]);
@@ -84,27 +78,31 @@ function addAllColumnListeners() {
 addAllColumnListeners();
 
 function dropDisc(column) {
-  playerMoves += 1;
   var playerClass = playerMoves % 2 === 1 ? "yellow" : "red";
   for (var i = 5; i >= 0; i--) {
     if (column[i].classList.contains("empty") === true) {
       column[i].classList.replace("empty", playerClass);
+      playerMoves += 1;
       break;
     } else if (column[i - 1].classList.contains("empty") === true) {
       column[i - 1].classList.replace("empty", playerClass);
+      playerMoves += 1;
       break;
     } else if (column[i - 2].classList.contains("empty") === true) {
       column[i - 2].classList.replace("empty", playerClass);
+      playerMoves += 1;
       break;
     } else if (column[i - 3].classList.contains("empty") === true) {
       column[i - 3].classList.replace("empty", playerClass);
+      playerMoves += 1;
       break;
     } else if (column[i - 4].classList.contains("empty") === true) {
       column[i - 4].classList.replace("empty", playerClass);
+      playerMoves += 1;
       break;
     } else if (column[i - 5].classList.contains("empty") === true) {
       column[i - 5].classList.replace("empty", playerClass);
-      removeColumnListeners();
+      playerMoves += 1;
       break;
     } else {
       alert("Column full, try a different one!");
@@ -245,3 +243,7 @@ function tieGame() {
   banner.classList.add("banner", "drawBanner");
   footer[0].appendChild(banner);
 }
+
+var resetButton = document.createElement('div');
+resetButton.classList.add('reset');
+heading[0].appendChild(resetButton);

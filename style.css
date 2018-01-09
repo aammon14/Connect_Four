@@ -115,3 +115,12 @@ footer {
 .drawBanner {
   color: lightblue;
 }
+
+.reset {
+
+}
+
+.resetOn {
+  background: green;
+  height: 10px;
+}
