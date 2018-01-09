@@ -1,6 +1,6 @@
 
 body {
-  background: ;
+  background: #4cdeff;
   font-family: 'Dosis', sans-serif;
 }
 
@@ -49,7 +49,7 @@ main {
 }
 
 .red {
-  background: #ce1a1a;
+  background: #ff2323;
 }
 
 
@@ -61,23 +61,23 @@ main {
   border: solid 5px darkblue;
   padding: 0 5px;
   text-align: center;
-  color: #ce1a1a;
+  color: #ff2323;
   width: 500px;
 }
 
 h3 {
   margin-bottom: 5px;
   text-align: center;
-  color: #ce1a1a;
+  color: #ff2323;
 }
 p {
   width: 400px;
   text-align: justify;
-  color: #ce1a1a;
+  color: #ff2323;
 }
 
 .button {
-  background-color: #ce1a1a;
+  background-color: #ff2323;
   font-size: 40px;
   padding: 10px;
   width: 200px;
@@ -97,17 +97,17 @@ footer {
 .banner {
   text-transform: uppercase;
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   border-radius: 10px;
   border: solid 5px darkblue;
   width: 500px;
   margin: 5px auto 0px;
   color: #003fff;
-  padding: 10px;
+  padding: 5px;
 }
 
 .redBanner {
-  background: #ce1a1a;
+  background: #ff2323;
 }
 
 .yellowBanner {
@@ -120,12 +120,12 @@ footer {
 
 .resetOn {
   background: #003fff;
-  color: #ce1a1a;
+  color: #ff2323;
   border: solid 5px darkblue;
-  font-size: 50px;
+  font-size: 40px;
   text-transform: uppercase;
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
   margin: 5px auto;
   text-align: center;
   width: 500px;

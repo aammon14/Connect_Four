@@ -254,6 +254,7 @@ function resetGame() {
   for (var i = 0; i < 42; i++) {
     cell[i].classList.remove("red", "yellow");
     cell[i].classList.add("empty");
+    playerMoves = 0;
     resetButton.classList.replace("resetOn", "reset");
     banner.classList.remove(
       "banner",
