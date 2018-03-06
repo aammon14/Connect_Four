@@ -1,4 +1,5 @@
-# Project1
+# Connect Four
+## Andrew Ammon
 
 ### What features did it include?
 I was able to create a functioning connect 4 game that checks for a winner. In my game, when a column is clicked, a disc drops to the lowest available space open. The discs alternate colors simulating two players. When one of the two players gets four in a row, a banner appears below the game board notifying the players which color has won.
