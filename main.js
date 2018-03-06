@@ -247,7 +247,7 @@ function tieGame() {
 
 var resetButton = document.createElement("div");
 resetButton.classList.add("reset");
-footer[0].appendChild(resetButton);
+main.appendChild(resetButton);
 resetButton.addEventListener("click", resetGame);
 
 function resetGame() {

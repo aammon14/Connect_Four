@@ -1,21 +1,28 @@
 
 body {
-  background: white;
+  background-image: url('https://rossta.net/assets/images/blog/purple-circles-550bff21.jpg');
   font-family: 'Dosis', sans-serif;
 }
 
 main {
   display: flex;
+  max-width: 550px;
+  background: #fdffa3;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
   height: 100%;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin : 10px auto;
+  box-shadow: 0 0 100px 20px rgba(245,8,8,1);
 }
 
 .cell {
   padding: 20px;
-  border: solid 5px darkblue;
+  border: solid 3px darkblue;
   border-radius: 50%;
   flex-basis: 14%;
   box-sizing: border-box;
@@ -32,7 +39,7 @@ main {
   justify-content: center;
   padding: 10px;
   background: #003fff;
-  border: solid 5px darkblue;
+  border: solid 3px darkblue;
   max-width: 500px;
   margin-bottom: 5px;
   border-radius: 20px;
@@ -49,7 +56,7 @@ main {
 }
 
 .red {
-  background: #ff2323;
+  background: #ff3f46;
 }
 
 
@@ -58,33 +65,33 @@ main {
   margin: 10px auto;
   background: #003fff;
   border-radius: 10px;
-  border: solid 5px darkblue;
+  border: solid 3px darkblue;
   padding: 0 5px;
   text-align: center;
-  color: #ff2323;
-  width: 500px;
+  color: #ff3f46;
+  width: 92%;
 }
 
 h3 {
   margin-bottom: 5px;
   font-size: 30px;
   text-align: center;
-  color: #ff2323;
+  color: #ff3f46;
 }
 p {
   width: 500px;
   font-size: 20px;
   text-align: justify;
-  color: #ff2323;
+  color: #ff3f46;
 }
 
 .button {
-  background-color: #ff2323;
+  background-color: #ff3f46;
   font-size: 40px;
   padding: 10px;
   width: 200px;
   text-align: center;
-  border: 5px solid darkblue;
+  border: 3px solid darkblue;
   text-decoration: none;
   color: #003fff;
   border-radius: 10px;
@@ -92,8 +99,10 @@ p {
 }
 
 footer {
-  background: ;
-  height: 100px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
 }
 
 .banner {
@@ -101,7 +110,7 @@ footer {
   text-align: center;
   font-size: 40px;
   border-radius: 10px;
-  border: solid 5px darkblue;
+  border: solid 3px darkblue;
   width: 500px;
   margin: 5px auto 0px;
   color: #003fff;
@@ -109,7 +118,7 @@ footer {
 }
 
 .redBanner {
-  background: #ff2323;
+  background: #ff3f46;
 }
 
 .yellowBanner {
@@ -122,8 +131,8 @@ footer {
 
 .resetOn {
   background: #003fff;
-  color: #ff2323;
-  border: solid 5px darkblue;
+  color: #ff3f46;
+  border: solid 3px darkblue;
   font-size: 40px;
   text-transform: uppercase;
   border-radius: 10px;
